@@ -21,3 +21,21 @@ const logger = function(message: string): void {
 const throwError = function(message: string): never {
     throw new Error(message)
 }
+
+const todayWether = {
+    date: new Date(),
+    weather: 'sunny'
+};
+
+const logWeather = ({ date, weather }: { date: Date, weather: string }): void =>  {
+    console.log(date);
+    console.log(weather);
+};
+
+// ES2015 desctructuring
+const logWeatherES2015 = ({ date, weather }) => {
+    console.log(date);
+    console.log(weather);
+};
+
+logWeather(todayWether);
