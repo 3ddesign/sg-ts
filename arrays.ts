@@ -11,7 +11,7 @@ const myCar = carMakers.pop();
 
 // prevent incopatible values
 
-carMakers.pop(100);
+// carMakers.pop(100);s
 
 // help with map
 
