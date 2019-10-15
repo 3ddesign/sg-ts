@@ -1,2 +1,1 @@
-# sg-ts
-TS test
+TypeScript features and docs
