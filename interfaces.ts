@@ -1,18 +1,21 @@
 interface Vehicle {
     name: string;
-    year: number;
+    year: Date;
     isBroken: boolean;
+    summary(): string;
 }
 
 const oldCivic = {
     name: 'Civic',
-    year: 2000,
-    isBroken: true
+    year: new Date(),
+    isBroken: true,
+    summary(): string {
+        return `Name: ${this.name}`;
+    }
 };
 
 const printVehicle = (vehicle: Vehicle) => {
-    console.log(vehicle.name);
-    console.log(vehicle.year);
+    console.log(vehicle.summary());
 };
 
 printVehicle(oldCivic);
