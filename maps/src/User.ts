@@ -1,6 +1,8 @@
 import faker from 'faker';
 
-class User {
+export default 'red';
+
+export class User {
     name: string;
     location: {
         lat: number;
