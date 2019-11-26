@@ -3,8 +3,8 @@ import { NumbersCollection } from './NumbersCollection';
 import { CharactersCollection } from './CharactersCollection';
 import { LinkedList } from './LinkedList';
  
-// const charactersCollection = new CharactersCollection('XaaxAd');
-// const sorter = new Sorter(charactersCollection);
+const charactersCollection = new CharactersCollection('XaaxAd');
+const sorter = new Sorter(charactersCollection);
 // sorter.sort();
 // console.log(charactersCollection);
 
