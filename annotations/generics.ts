@@ -21,3 +21,56 @@ class ArrayOfAnything<T> {
         return this.collection[index];
     }
 }
+
+// new ArrayOfAnything<string>(['a', 'b', 'c']);
+// new ArrayOfAnything(['a', 'b', 'c']);
+
+// Example of generics with functions
+
+function printStrings(arr: string[]): void {
+    for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+    }
+}
+
+function printNumbers(arr: number[]): void {
+    for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+    }
+}
+
+function printAnything<T>(arr: T[]): void {
+    for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+    }
+}
+
+// printAnything<string>(['a', 'b', 'c']);
+
+// Generic constrains
+
+class Car {
+    print() {
+        console.log('Car');
+    }
+}
+
+
+class House {
+    print() {
+        console.log('House');
+    }
+}
+
+interface Printable {
+    print(): void;
+}
+
+function printHousesOrCars<T extends Printable>(arr: T[]): void {
+    for (let i = 0; i < arr.length; i++) {
+         arr[i].print();
+    }
+}
+
+// printHousesOrCars<House>([new House(), new House()]);
+// printHousesOrCars<Car>([new Car(), new Car()]);
