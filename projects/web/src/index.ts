@@ -2,8 +2,12 @@ import { User } from './models/User';
 
 const user = new User({ name: 'myname', age: 20});
 
-user.on('change', () => {});
-user.on('change2', () => {});
-user.on('change3', () => {});
+user.on('change', () => {
+    console.log('change1');
 
-console.log(user);
+});
+user.on('change', () => {
+    console.log('change2');
+});
+
+user.trigger('change');
