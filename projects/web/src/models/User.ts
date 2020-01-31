@@ -1,6 +1,6 @@
 import { Model } from './Model';
 import { ApiSync } from './ApiSync';
-import { Attributes } from './Attributes'; 
+import { Attributes } from './Attributes';
 import { Eventing } from './Eventing';
 
 
@@ -20,6 +20,8 @@ export class User extends Model<UserProps> {
             new ApiSync<UserProps>(rootUrl),
         )
     }
-}
 
-// const user = User.buildUser({});
+    isAdminUser(): boolean {
+        return this.get('id') === 1;
+    }
+}
