@@ -3,11 +3,16 @@ export class UserForm {
 
     eventsMap(): { [key: string]: () => void } {
         return {
-            'click:button': this.onButtonClick
+            'click:button': this.onButtonClick,
+            'mouseover:h1': this.onHeaderOver
         };
     }
 
-    onButtonClick() {
+    onHeaderOver(): void {
+        console.log('onHeaderOver');
+    }
+
+    onButtonClick(): void {
         console.log('onButtonClick');
     }
 
