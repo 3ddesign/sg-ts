@@ -1,13 +1,15 @@
 import { Router, Request, Response, NextFunction } from 'express';
 
 interface RequestWithBody extends Request {
-    body: {[ key: string]: string | undefined }
+    body: { [key: string]: string | undefined }
 }
+
+//TODO: refactor with decorastors:
 
 function requireAuth(req: Request, res: Response, next: NextFunction) {
     if (req.session && req.session.loggedIn) {
-         next();
-         return;
+        next();
+        return;
     }
 
     res.status(403);
@@ -34,7 +36,7 @@ router.get('/login', (req: Request, res: Response) => {
 
 router.post('/login', (req: RequestWithBody, res: Response) => {
     const { email, password } = req.body;
-    
+
     if (email && password && email === 'hi@hi.com' && password === 'password') {
         req.session = { loggedId: true }
         res.redirect('/');
@@ -69,6 +71,5 @@ router.get('/logout', (req: Request, res: Response) => {
 router.get('/protected', requireAuth, (req: Request, res: Response) => {
     res.send('Welcome to protected router, logged in user');
 });
-
 
 export { router };
