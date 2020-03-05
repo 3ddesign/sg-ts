@@ -5,13 +5,20 @@ class Boat {
         return `This boat color is ${this.color}`;
     }
 
-    @testDecorator
+    @logError
     pilot(): void {
+        throw new Error();
         console.log('swish');
     }
 }
-
-function testDecorator(target: any, key: string): void {
+//Object.defineProperty(), Object.getOwnPropertyDescriptor(boat, color)
+// value: "color"
+// writable: true
+// enumerable: true
+// configurable: true
+function logError(target: any, key: string, desc: PropertyDescriptor): void {
     console.log('target: ', target);
     console.log('key: ', key);
 }
+
+// logError(Boat.prototype, 'pilot');
