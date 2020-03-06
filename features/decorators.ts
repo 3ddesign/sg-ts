@@ -17,8 +17,18 @@ class Boat {
 // enumerable: true
 // configurable: true
 function logError(target: any, key: string, desc: PropertyDescriptor): void {
-    console.log('target: ', target);
-    console.log('key: ', key);
+    const method = desc.value;
+
+    desc.value = function () {
+        try {
+            method()
+        }
+        catch (e) {
+            console.log('Oops, boat was sunk');
+        }
+    };
 }
+
+new Boat().pilot();
 
 // logError(Boat.prototype, 'pilot');
