@@ -3,24 +3,29 @@ import 'reflect-metadata';
 
 // EXAMPLE WITH CLASS
 
+@controller
 class Plane {
     color: string = 'red';
 
-    @markFunction
+    @get('/login')
     fly(): void {
         console.log('vvrrrr');
     }
 }
+function get(path: string) {
+    return function(target: Plane, key: string) {
+        Reflect.defineMetadata('path', path, target, key)
+    }
+}
 
-function markFunction(target: Plane, key: string) {
-    Reflect.defineMetadata('secret', 123, target, key)
-} 
+function controller(target: typeof Plane) {
+    for (let key in target.prototype) {
+       const secret =  Reflect.getMetadata('secret', target.prototype, key);
+       console.log(secret);
+    }
+}
 
 const secret = Reflect.getMetadata('secret', Plane.prototype, 'fly')
-
-console.log(secret);
-
-
 
 // EXAMPLE WITH VARIABLE:
 
