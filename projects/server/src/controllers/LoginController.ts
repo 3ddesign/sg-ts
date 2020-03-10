@@ -16,5 +16,5 @@ class LoginController {
             <button>Submit</button>
         </form>
         `);
-    });
+    };
 }
