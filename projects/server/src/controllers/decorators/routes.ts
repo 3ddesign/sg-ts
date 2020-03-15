@@ -1,6 +1,7 @@
 import "reflect-metadata";
+import { router } from "../../routes/loginRoutes";
 
-function routeFinder(method: string) {
+function routeBinder(method: string) {
   return function(path: string) {
     return function(target: any, key: string, desc: PropertyDescriptor) {
       Reflect.defineMetadata("path", path, target, key);
@@ -8,3 +9,9 @@ function routeFinder(method: string) {
     };
   };
 }
+
+export const get = routeBinder('get');
+export const put = routeBinder('put');
+export const post = routeBinder('post');
+export const del = routeBinder('delete');
+export const patch = routeBinder('patch');
