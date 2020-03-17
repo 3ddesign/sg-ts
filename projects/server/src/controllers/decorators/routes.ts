@@ -1,17 +1,17 @@
 import "reflect-metadata";
-import { router } from "../../routes/loginRoutes";
+import { Methods } from './Methods';
 
 function routeBinder(method: string) {
   return function(path: string) {
     return function(target: any, key: string, desc: PropertyDescriptor) {
-      Reflect.defineMetadata("path", path, target, key);
-      Reflect.defineMetadata("method", "get", target, key);
+      Reflect.defineMetadata('path', path, target, key);
+      Reflect.defineMetadata('method', "get", target, key);
     };
   };
 }
 
-export const get = routeBinder('get');
-export const put = routeBinder('put');
-export const post = routeBinder('post');
-export const del = routeBinder('delete');
-export const patch = routeBinder('patch');
+export const get = routeBinder(Methods.get);
+export const put = routeBinder(Methods.put);
+export const post = routeBinder(Methods.post);
+export const del = routeBinder(Methods.del);
+export const patch = routeBinder(Methods.patch);
