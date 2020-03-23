@@ -1,5 +1,16 @@
-import { Request, Response } from 'express';
-import { get, controller } from './decorators'
+import { Request, Response, NextFunction } from 'express';
+import { get, controller, use } from './decorators'
+
+function requireAuth(req: Request, res: Response, next: NextFunction) {
+    if (req.session && req.session.loggedIn) {
+        next();
+        return;
+    }
+
+    res.status(403);
+    res.send('Not permitted');
+}
+
 
 @controller('')
 class RootController {
@@ -20,5 +31,11 @@ class RootController {
             </div>
             `)
         }
+    }
+
+    @get('/protected')
+    @use(requireAuth)
+    getProtected(req: Request, res: Response) {
+        res.send('Welcome to protected router, logged in user');
     }
 }
