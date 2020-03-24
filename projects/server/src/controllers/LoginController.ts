@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { get, controller, bodyValidator, post} from './decorators';
 
-
 @controller('/auth')
 class LoginController {
     @get('/login')
