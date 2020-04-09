@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Todo, fetchTodos } from '../actions';
+import { Todo, fetchTodos, deleteTodo } from '../actions';
 import { StoreState } from '../reducers';
 
 interface AppProps {
     todos: Todo[];
     fetchTodos(): any;
-
+    delete: typeof deleteTodo;
 }
 
 export class _App extends React.Component<AppProps> {
