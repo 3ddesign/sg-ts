@@ -41,6 +41,7 @@ export class _App extends React.Component<AppProps> {
         return (
         <div>
             <button onClick={this.onButtonClick}>Fetch</button>
+            { this.state.fetching ? 'LOADING' : null}
             {this.renderList()}
         </div>
         );
