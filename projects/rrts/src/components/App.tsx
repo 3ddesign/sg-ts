@@ -9,9 +9,26 @@ interface AppProps {
     delete: typeof deleteTodo;
 }
 
+interface AppState {
+    fetching: boolean;
+}
+
 export class _App extends React.Component<AppProps> {
+    constructor(props: AppProps) { 
+        super(props)
+
+        this.state = { fetching: false}
+    }
+
+    componentDidUpdate(prevProps: AppProps): void {
+        if (!prevProps.todos && this.props.todos.length) {
+         this.state = { fetching: false}
+        }
+    }
+
     onButtonClick = (): void => {
         this.props.fetchTodos();
+        this.setState({ fetching: true })
     }
 
     renderList(): JSX.Element[] {
